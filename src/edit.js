@@ -41,8 +41,16 @@ import {
  */
 export default function Edit(props) {
 	const { attributes, setAttributes } 	= props;
-	console.log(attributes.serach_place);
 	var satelite_view_enable = attributes.satelite_view ? 'k' : '';
+	
+	const changeSearchPlace = (newPlace) => {
+		
+		setAttributes({
+			serach_place: newPlace,
+		});
+		console.log(jQuery('.place-name').text());
+	};
+
 	return (
 		<p {...useBlockProps()}>
 			{
@@ -52,7 +60,7 @@ export default function Edit(props) {
 						<TextControl
 							label="Add Place"
 							value={ attributes.serach_place }
-							onChange={ ( serach_place ) =>  setAttributes({ serach_place })}
+							onChange={ changeSearchPlace }
 						/>
 						<ToggleControl
 							label="Satelite View?"
@@ -63,7 +71,6 @@ export default function Edit(props) {
 						/>
 					</PanelBody>
 				</InspectorControls>
-
 				<div class="mapouter">
 					<div class="gmap_canvas">
 						<iframe 

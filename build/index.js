@@ -60,16 +60,21 @@ function Edit(props) {
     attributes,
     setAttributes
   } = props;
-  console.log(attributes.serach_place);
   var satelite_view_enable = attributes.satelite_view ? 'k' : '';
+
+  const changeSearchPlace = newPlace => {
+    setAttributes({
+      serach_place: newPlace
+    });
+    console.log(jQuery('.place-name').text());
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: "Map Data"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
     label: "Add Place",
     value: attributes.serach_place,
-    onChange: serach_place => setAttributes({
-      serach_place
-    })
+    onChange: changeSearchPlace
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     label: "Satelite View?",
     checked: attributes.satelite_view,
@@ -140,7 +145,7 @@ __webpack_require__.r(__webpack_exports__);
    */
   title: 'Google Maps Block',
   description: "Gutenberg Block to embed map on your page",
-  // icon: 'list-view',
+  icon: 'location-alt',
   apiVersion: 2,
   attributes: {
     serach_place: {
@@ -204,8 +209,25 @@ __webpack_require__.r(__webpack_exports__);
  * @return {WPElement} Element to render.
  */
 
-function save() {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save(), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Google Maps Block – hello from the saved content!', 'google-maps-block'));
+function save(props) {
+  var satelite_view_enable = props.attributes.satelite_view ? 'k' : '';
+  console.log(props.attributes.satelite_view);
+  console.log(satelite_view_enable);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    class: "mapouter"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    class: "gmap_canvas"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
+    width: "600",
+    height: "500",
+    id: "gmap_canvas" // src="https://maps.google.com/maps?q=Manekchowk&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+    ,
+    src: "https://maps.google.com/maps?q=" + props.attributes.serach_place + "&t=" + satelite_view_enable + "&z=13&ie=UTF8&iwloc=&output=embed",
+    frameborder: "0",
+    scrolling: "no",
+    marginheight: "0",
+    marginwidth: "0"
+  })))));
 }
 
 /***/ }),

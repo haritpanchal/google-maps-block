@@ -31,7 +31,7 @@ registerBlockType('create-block/google-maps-block', {
 	 */
 	title: 'Google Maps Block',
 	description: "Gutenberg Block to embed map on your page",
-	// icon: 'list-view',
+	icon: 'location-alt',
 	apiVersion: 2,
 	attributes: {
 		serach_place: {

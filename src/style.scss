@@ -6,9 +6,10 @@
  */
 
 .wp-block-create-block-google-maps-block {
-	background-color: #21759b;
+	background-color: #21759b1a;
 	color: #fff;
 	padding: 2px;
+	border: none;
 }
 
 .mapouter {
@@ -16,8 +17,12 @@
 	// text-align: right;
 	height: 540px;
 	width: 600px;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-// .wp-block-create-block-google-maps-block {
-// 	background-color: #21759b;
-// }
+.gmap_canvas {
+	width: 100%;
+}

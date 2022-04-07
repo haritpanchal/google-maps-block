@@ -22,13 +22,31 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
+export default function save(props) {
+	var satelite_view_enable = props.attributes.satelite_view ? 'k' : '';
+	console.log(props.attributes.satelite_view);
+	console.log(satelite_view_enable);
 	return (
 		<p {...useBlockProps.save()}>
-			{__(
-				'Google Maps Block – hello from the saved content!',
-				'google-maps-block'
-			)}
+			{
+				<>
+					<div class="mapouter">
+						<div class="gmap_canvas">
+							<iframe 
+								width="600" 
+								height="500" 
+								id="gmap_canvas" 
+								// src="https://maps.google.com/maps?q=Manekchowk&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+								src={"https://maps.google.com/maps?q="+props.attributes.serach_place+"&t="+satelite_view_enable+"&z=13&ie=UTF8&iwloc=&output=embed"} 
+								frameborder="0" 
+								scrolling="no" 
+								marginheight="0" 
+								marginwidth="0">
+							</iframe>
+						</div>
+					</div>
+				</>
+			}
 		</p>
 	);
 }
