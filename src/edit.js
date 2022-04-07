@@ -48,7 +48,6 @@ export default function Edit(props) {
 		setAttributes({
 			serach_place: newPlace,
 		});
-		console.log(jQuery('.place-name').text());
 	};
 
 	return (

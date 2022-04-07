@@ -24,8 +24,6 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 export default function save(props) {
 	var satelite_view_enable = props.attributes.satelite_view ? 'k' : '';
-	console.log(props.attributes.satelite_view);
-	console.log(satelite_view_enable);
 	return (
 		<p {...useBlockProps.save()}>
 			{
